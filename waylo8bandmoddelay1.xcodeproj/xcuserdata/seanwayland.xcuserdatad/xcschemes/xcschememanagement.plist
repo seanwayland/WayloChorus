@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>waylo8bandmoddelay1 - AU.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>waylo8bandmoddelay1 - All.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>waylo8bandmoddelay1 - Shared Code.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>waylo8bandmoddelay1 - Standalone Plugin.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>waylo8bandmoddelay1 - VST.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>310F66B8CA8B127777C89D64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>80E2814DC9A02ECA4B1C23D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B036E84E48CC9A2EE36820ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C22E8ACEEC17D3E3BF42085F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C432A7B68458D6ECB07B6731</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

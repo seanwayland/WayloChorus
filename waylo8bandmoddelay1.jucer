@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="sqhHNV" name="waylo8bandmoddelay1" displaySplashScreen="1"
+              reportAppUsage="1" splashScreenColour="Dark" projectType="audioplug"
+              version="1.0.0" bundleIdentifier="com.yourcompany.waylo8bandmoddelay1"
+              includeBinaryInAppConfig="1" cppLanguageStandard="11" companyCopyright=""
+              buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" buildStandalone="1" enableIAA="0" pluginName="waylo8bandmoddelay1"
+              pluginDesc="waylo8bandmoddelay1" pluginManufacturer="yourcompany"
+              pluginManufacturerCode="Manu" pluginCode="Sqhh" pluginChannelConfigs=""
+              pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
+              pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="waylo8bandmoddelay1AU"
+              pluginRTASCategory="" aaxIdentifier="com.yourcompany.waylo8bandmoddelay1"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.2.0">
+  <MAINGROUP id="p9ZZdn" name="waylo8bandmoddelay1">
+    <GROUP id="{023CC517-EDCD-FC35-A0E3-C5B98AE9D9D2}" name="Source">
+      <FILE id="N8M8Nq" name="C74_GENPLUGIN.cpp" compile="1" resource="0"
+            file="Source/C74_GENPLUGIN.cpp"/>
+      <FILE id="qZUsbC" name="C74_GENPLUGIN.h" compile="0" resource="0" file="Source/C74_GENPLUGIN.h"/>
+      <FILE id="md8zwN" name="genlib.cpp" compile="1" resource="0" file="Source/genlib.cpp"/>
+      <FILE id="s1XbsD" name="genlib.h" compile="0" resource="0" file="Source/genlib.h"/>
+      <FILE id="QCNOtl" name="genlib_common.h" compile="0" resource="0" file="Source/genlib_common.h"/>
+      <FILE id="jdkmHO" name="genlib_common_win.h" compile="0" resource="0"
+            file="Source/genlib_common_win.h"/>
+      <FILE id="d7w6mP" name="genlib_exportfunctions.h" compile="0" resource="0"
+            file="Source/genlib_exportfunctions.h"/>
+      <FILE id="btQV35" name="genlib_ops.h" compile="0" resource="0" file="Source/genlib_ops.h"/>
+      <FILE id="vgbRcg" name="genlib_platform.h" compile="0" resource="0"
+            file="Source/genlib_platform.h"/>
+      <FILE id="M43613" name="json.c" compile="1" resource="0" file="Source/json.c"/>
+      <FILE id="I2uCp0" name="json.h" compile="0" resource="0" file="Source/json.h"/>
+      <FILE id="fZUNOw" name="json_builder.c" compile="1" resource="0" file="Source/json_builder.c"/>
+      <FILE id="zg135n" name="json_builder.h" compile="0" resource="0" file="Source/json_builder.h"/>
+      <FILE id="XFdzby" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="lpkX0a" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="lob3Qx" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="ePYDAQ" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" enablePluginBinaryCopyStep="1" isDebug="1" optimisation="1"
+                       linkTimeOptimisation="0" targetName="waylo8bandmoddelay1"/>
+        <CONFIGURATION name="Release" enablePluginBinaryCopyStep="1" isDebug="0" optimisation="3"
+                       linkTimeOptimisation="1" targetName="waylo8bandmoddelay1"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+</JUCERPROJECT>
