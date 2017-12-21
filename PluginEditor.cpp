@@ -548,12 +548,14 @@ void C74GenAudioProcessorEditor::resized()
     d6freqSlider->setBounds (344, 168, 264, 16);
 
     d6time->setBounds (608, 200, 64, 16);
+
     d6freq->setBounds (608, 168, 64, 16);
     d5timeSlider->setBounds (344, 104, 264, 16);
     d6timeSlider->setBounds (344, 200, 264, 16);
     d7LevelSlider->setBounds (344, 232, 264, 16);
     d7Level->setBounds (608, 232, 64, 16);
     d7freqSlider->setBounds (344, 264, 264, 16);
+    d7timeSlider->setBounds (344, 296, 264, 16);
 
     d7time->setBounds (608, 296, 64, 16);
     d7freq->setBounds (608, 264, 64, 16);
