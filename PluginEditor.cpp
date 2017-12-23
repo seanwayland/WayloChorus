@@ -314,12 +314,88 @@ C74GenAudioProcessorEditor::C74GenAudioProcessorEditor (C74GenAudioProcessor& p)
     d7freq->setEditable (false, false, false);
     d7freq->setColour (TextEditor::textColourId, Colours::black);
     d7freq->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    
+    
 
     addAndMakeVisible (d8LevelSlider = new Slider ("d8LevelSlider"));
     d8LevelSlider->setRange (0, 10, 0.001);
     d8LevelSlider->setSliderStyle (Slider::LinearHorizontal);
     d8LevelSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     d8LevelSlider->addListener (this);
+    
+    // add feedback slider 5
+    addAndMakeVisible (d5FdBk = new Label ("d5FdBk",
+                                           TRANS("d5 FdBk\n")));
+    d5FdBk->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    d5FdBk->setJustificationType (Justification::centredLeft);
+    d5FdBk->setEditable (false, false, false);
+    d5FdBk->setColour (TextEditor::textColourId, Colours::black);
+    d5FdBk->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    
+    
+    
+    addAndMakeVisible (d5FdBkSlider = new Slider ("d5FdBkSlider"));
+    d5FdBkSlider->setRange (0, 10, 0.01);
+    d5FdBkSlider->setSliderStyle (Slider::LinearHorizontal);
+    d5FdBkSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    d5FdBkSlider->addListener (this);
+    
+    // add feedback slider 6
+    addAndMakeVisible (d6FdBk = new Label ("d6FdBk",
+                                           TRANS("d6 FdBk\n")));
+    d6FdBk->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    d6FdBk->setJustificationType (Justification::centredLeft);
+    d6FdBk->setEditable (false, false, false);
+    d6FdBk->setColour (TextEditor::textColourId, Colours::black);
+    d6FdBk->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    
+    
+    
+    addAndMakeVisible (d6FdBkSlider = new Slider ("d6FdBkSlider"));
+    d6FdBkSlider->setRange (0, 10, 0.01);
+    d6FdBkSlider->setSliderStyle (Slider::LinearHorizontal);
+    d6FdBkSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    d6FdBkSlider->addListener (this);
+    
+    // add feedback slider 7
+    addAndMakeVisible (d7FdBk = new Label ("d7FdBk",
+                                           TRANS("d7 FdBk\n")));
+    d7FdBk->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    d7FdBk->setJustificationType (Justification::centredLeft);
+    d7FdBk->setEditable (false, false, false);
+    d7FdBk->setColour (TextEditor::textColourId, Colours::black);
+    d7FdBk->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    
+    
+    
+    addAndMakeVisible (d7FdBkSlider = new Slider ("d7FdBkSlider"));
+    d7FdBkSlider->setRange (0, 10, 0.01);
+    d7FdBkSlider->setSliderStyle (Slider::LinearHorizontal);
+    d7FdBkSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    d7FdBkSlider->addListener (this);
+    
+    // add feedback slider 8
+    addAndMakeVisible (d8FdBk = new Label ("d8FdBk",
+                                           TRANS("d8 Fdbk\n")));
+    d8FdBk->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    d8FdBk->setJustificationType (Justification::centredLeft);
+    d8FdBk->setEditable (false, false, false);
+    d8FdBk->setColour (TextEditor::textColourId, Colours::black);
+    d8FdBk->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    
+    
+    
+    addAndMakeVisible (d8FdBkSlider = new Slider ("d8FdBkSlider"));
+    d8FdBkSlider->setRange (0, 10, 0.01);
+    d8FdBkSlider->setSliderStyle (Slider::LinearHorizontal);
+    d8FdBkSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
+    d8FdBkSlider->addListener (this);
+    
+    
+    
+    
+    
+    
 
     addAndMakeVisible (d8Level = new Label ("d8Level",
                                             TRANS("d8 Level\n")));
@@ -362,9 +438,24 @@ C74GenAudioProcessorEditor::C74GenAudioProcessorEditor (C74GenAudioProcessor& p)
 
 
     addAndMakeVisible (label = new Label ("new label",
-                                          TRANS("WAYLOMODELAY  \n"
-                                          "www.seanwayland.com\n")));
-    label->setFont (Font ("Copperplate", 40.00f, Font::plain).withTypefaceStyle ("Regular"));
+                                          TRANS("WAYLOMODELAY88\n"
+                                                "\n"
+                                                
+                    "8 bands of delay with delay time modulated by sine waves\n"
+                    "Delays 5 to 8 have feedback\n"
+                    "Freq changes the modulation speed\n"
+                                                "\n"
+                    "Purchase this software for $20 at www.seanwayland.com\n"
+                    "Your purchase comes with free updates & support for life\n"
+                    "I am an indidual musician not a large corporation\n"
+                   
+                    "Made with JUCE and MAX7\n"
+                   
+                                                
+                                              
+                                       
+                                                )));
+    label->setFont (Font ("Copperplate", 15.00f, Font::plain).withTypefaceStyle ("Regular"));
     label->setJustificationType (Justification::centredLeft);
     label->setEditable (false, false, false);
     label->setColour (Label::textColourId, Colours::yellow);
@@ -415,7 +506,7 @@ C74GenAudioProcessorEditor::C74GenAudioProcessorEditor (C74GenAudioProcessor& p)
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (800, 700);
+    setSize (700, 700);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -489,6 +580,15 @@ C74GenAudioProcessorEditor::~C74GenAudioProcessorEditor()
     directLevel = nullptr;
     moddepthSlider = nullptr;
     moddepth = nullptr;
+    d5FdBkSlider = nullptr;
+    d5FdBk = nullptr;
+    d6FdBkSlider = nullptr;
+    d6FdBk = nullptr;
+    d7FdBkSlider = nullptr;
+    d7FdBk = nullptr;
+    d8FdBkSlider = nullptr;
+    d8FdBk = nullptr;
+  
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -566,13 +666,21 @@ void C74GenAudioProcessorEditor::resized()
     d8time->setBounds (608, 392, 64, 16);
     d8freq->setBounds (608, 360, 64, 16);
 
-    label->setBounds (16, 480, 512, 96);
+    label->setBounds (16, 530, 512, 150);
     d4timeSlider->setBounds (8, 392, 264, 16);
     d8timeSlider->setBounds (344, 392, 264, 16);
     directLevelSlider->setBounds (8, 424, 264, 16);
     directLevel->setBounds (272, 416, 64, 40);
     moddepthSlider->setBounds (344, 424, 264, 16);
     moddepth->setBounds (608, 416, 80, 32);
+    d5FdBkSlider->setBounds (8, 456 , 264, 16);
+    d5FdBk->setBounds (272, 456, 64, 16);
+    d6FdBkSlider->setBounds (8, 488, 264, 16);
+    d6FdBk->setBounds (272, 488, 64, 16);
+    d7FdBkSlider->setBounds (344, 456, 264, 16);
+    d7FdBk->setBounds (608, 456, 64, 16);
+    d8FdBkSlider->setBounds (344, 488, 264, 16);
+    d8FdBk->setBounds (608, 488, 64, 16);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 
@@ -721,6 +829,26 @@ void C74GenAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWasMoved)
     {
        sliderThatWasMoved->getValue();
        processor.setParameter(25,sliderThatWasMoved->getValue());
+    }
+    else if (sliderThatWasMoved == d5FdBkSlider)
+    {
+        sliderThatWasMoved->getValue();
+        processor.setParameter(26,sliderThatWasMoved->getValue());
+    }
+    else if (sliderThatWasMoved == d6FdBkSlider)
+    {
+        sliderThatWasMoved->getValue();
+        processor.setParameter(27,sliderThatWasMoved->getValue());
+    }
+    else if (sliderThatWasMoved == d7FdBkSlider)
+    {
+        sliderThatWasMoved->getValue();
+        processor.setParameter(28,sliderThatWasMoved->getValue());
+    }
+    else if (sliderThatWasMoved == d8FdBkSlider)
+    {
+        sliderThatWasMoved->getValue();
+        processor.setParameter(29,sliderThatWasMoved->getValue());
     }
 
     //[UsersliderValueChanged_Post]

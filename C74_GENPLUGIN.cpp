@@ -76,11 +76,22 @@ typedef struct State {
 	t_sample m_directLevel_22;
 	t_sample m_d7time_21;
 	t_sample m_d4time_19;
+    // added feedback level paramaters
+    t_sample m_d5FdBk_40;
+    t_sample m_d6FdBk_41;
+    t_sample m_d7FdBk_42;
+    t_sample m_d8FdBk_43;
+    // ((t_sample)0.5) (t_sample)0.4) (t_sample)0.5) (t_sample)0.38)
 	// re-initialize all member variables;
 	inline void reset(t_param __sr, int __vs) {
 		__exception = 0;
 		vectorsize = __vs;
 		samplerate = __sr;
+        m_d5FdBk_40 = ((t_sample)0.5);
+        m_d6FdBk_41 = ((t_sample)0.4);
+        m_d7FdBk_42 = ((t_sample)0.5);
+        m_d8FdBk_43 = ((t_sample)0.38);
+        
 		m_d4Level_1 = ((t_sample)0.5);
 		m_d2time_2 = ((int)34);
 		m_d8Level_3 = ((t_sample)0.5);
@@ -120,6 +131,10 @@ typedef struct State {
 		__m_cycle_37.reset(samplerate, 0);
 		__m_cycle_38.reset(samplerate, 0);
 		__m_cycle_39.reset(samplerate, 0);
+        m_d5FdBk_40 =((t_sample)0.5);
+        m_d6FdBk_41 =((t_sample)0.4);
+        m_d7FdBk_42 =((t_sample)0.5);
+        m_d8FdBk_43 =((t_sample)0.38);
 		genlib_reset_complete(this);
 		
 	};
@@ -192,7 +207,8 @@ typedef struct State {
 			t_sample mstosamps_2110 = (add_2111 * (samplerate * 0.001));
 			t_sample tap_2083 = m_delay_28.read_linear(mstosamps_2110);
 			t_sample mul_2087 = (tap_2083 * m_d5Level_17);
-			t_sample mul_2074 = (mul_2087 * ((t_sample)0.5));
+			t_sample mul_2074 = (mul_2087 * m_d5FdBk_40);
+            // (t_sample)0.5) (t_sample)0.4) (t_sample)0.5) (t_sample)0.38)
 			__m_cycle_37.freq(float_2066);
 			t_sample cycle_2103 = __m_cycle_37(__sinedata);
 			t_sample cycleindex_2104 = __m_cycle_37.phase();
@@ -202,7 +218,8 @@ typedef struct State {
 			t_sample tap_2079 = m_delay_29.read_linear(mstosamps_2100);
 			t_sample mul_2084 = (tap_2079 * m_d7Level_7);
 			t_sample out1 = ((((mul_2084 + mul_2087) + mul_2089) + mul_2091) + mul_2092);
-			t_sample mul_2073 = (mul_2084 * ((t_sample)0.4));
+			t_sample mul_2073 = (mul_2084 * m_d7FdBk_42);
+
 			__m_cycle_38.freq(float_2067);
 			t_sample cycle_2108 = __m_cycle_38(__sinedata);
 			t_sample cycleindex_2109 = __m_cycle_38.phase();
@@ -211,7 +228,8 @@ typedef struct State {
 			t_sample mstosamps_2105 = (add_2106 * (samplerate * 0.001));
 			t_sample tap_2081 = m_delay_30.read_linear(mstosamps_2105);
 			t_sample mul_2086 = (tap_2081 * m_d6Level_9);
-			t_sample mul_2072 = (mul_2086 * ((t_sample)0.5));
+			t_sample mul_2072 = (mul_2086 * m_d6FdBk_41);
+
 			__m_cycle_39.freq(float_2065);
 			t_sample cycle_2098 = __m_cycle_39(__sinedata);
 			t_sample cycleindex_2099 = __m_cycle_39.phase();
@@ -221,7 +239,7 @@ typedef struct State {
 			t_sample tap_2077 = m_delay_31.read_linear(mstosamps_2095);
 			t_sample mul_2085 = (tap_2077 * m_d8Level_3);
 			t_sample out2 = ((((mul_2085 + mul_2086) + mul_2088) + mul_2090) + mul_2093);
-			t_sample mul_2075 = (mul_2085 * ((t_sample)0.38));
+			t_sample mul_2075 = (mul_2085 * m_d8FdBk_43);
 			m_delay_27.write((in2 + in1));
 			m_delay_31.write(((mul_2075 + in2) + in1));
 			m_delay_30.write(((mul_2072 + in2) + in1));
@@ -318,6 +336,19 @@ typedef struct State {
 	inline void set_d2freq(t_param _value) {
 		m_d2freq_26 = (_value < 0 ? 0 : (_value > 5 ? 5 : _value));
 	};
+    inline void set_d5FdBk(t_param _value) {
+        m_d5FdBk_40 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+    };
+    inline void set_d6FdBk(t_param _value) {
+        m_d6FdBk_41 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+    };
+    inline void set_d7FdBk(t_param _value) {
+        m_d7FdBk_42 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+    };
+    inline void set_d8FdBk(t_param _value) {
+        m_d8FdBk_43 = (_value < 0 ? 0 : (_value > 1 ? 1 : _value));
+    };
+    
 	
 } State;
 
@@ -333,7 +364,7 @@ int gen_kernel_numouts = 2;
 
 int num_inputs() { return gen_kernel_numins; }
 int num_outputs() { return gen_kernel_numouts; }
-int num_params() { return 26; }
+int num_params() { return 30; }
 
 /// Assistive lables for the signal inputs and outputs
 
@@ -385,6 +416,10 @@ void setparameter(CommonState *cself, long index, t_param value, void *ref) {
 		case 23: self->set_d8time(value); break;
 		case 24: self->set_directLevel(value); break;
 		case 25: self->set_moddepth(value); break;
+        case 26: self->set_d5FdBk(value); break;
+        case 27: self->set_d6FdBk(value); break;
+        case 28: self->set_d7FdBk(value); break;
+        case 29: self->set_d8FdBk(value); break;
 		
 		default: break;
 	}
@@ -421,6 +456,10 @@ void getparameter(CommonState *cself, long index, t_param *value) {
 		case 23: *value = self->m_d8time_13; break;
 		case 24: *value = self->m_directLevel_22; break;
 		case 25: *value = self->m_moddepth_8; break;
+        case 26: *value = self->m_d5FdBk_40; break;
+        case 27: *value = self->m_d6FdBk_41; break;
+        case 28: *value = self->m_d7FdBk_42; break;
+        case 29: *value = self->m_d8FdBk_43; break;
 		
 		default: break;
 	}
@@ -501,8 +540,8 @@ void *create(t_param sr, long vs) {
 	self->__commonstate.numouts = gen_kernel_numouts;
 	self->__commonstate.sr = sr;
 	self->__commonstate.vs = vs;
-	self->__commonstate.params = (ParamInfo *)genlib_sysmem_newptr(26 * sizeof(ParamInfo));
-	self->__commonstate.numparams = 26;
+	self->__commonstate.params = (ParamInfo *)genlib_sysmem_newptr(30 * sizeof(ParamInfo));
+	self->__commonstate.numparams = 30;
 	// initialize parameter 0 ("m_d1Level_16")
 	pi = self->__commonstate.params + 0;
 	pi->name = "d1Level";
@@ -839,6 +878,63 @@ void *create(t_param sr, long vs) {
 	pi->outputmax = 1000;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
+    // initialize parameter 26 ("")
+    pi = self->__commonstate.params + 26;
+    pi->name = "d5FdBk";
+    pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+    pi->defaultvalue = self->m_d5FdBk_40;
+    pi->defaultref = 0;
+    pi->hasinputminmax = false;
+    pi->inputmin = 0;
+    pi->inputmax = 1;
+    pi->hasminmax = true;
+    pi->outputmin = 0;
+    pi->outputmax = 1;
+    pi->exp = 0;
+    pi->units = "";		// no units defined
+    // initialize parameter 27 ("")
+    pi = self->__commonstate.params + 27;
+    pi->name = "d6FdBk";
+    pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+    pi->defaultvalue = self->m_d6FdBk_41;
+    pi->defaultref = 0;
+    pi->hasinputminmax = false;
+    pi->inputmin = 0;
+    pi->inputmax = 1;
+    pi->hasminmax = true;
+    pi->outputmin = 0;
+    pi->outputmax = 1;
+    pi->exp = 0;
+    pi->units = "";		// no units defined
+        // initialize parameter 28 ("")
+    pi = self->__commonstate.params + 28;
+    pi->name = "d7FdBk";
+    pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+    pi->defaultvalue = self->m_d7FdBk_42;
+    pi->defaultref = 0;
+    pi->hasinputminmax = false;
+    pi->inputmin = 0;
+    pi->inputmax = 1;
+    pi->hasminmax = true;
+    pi->outputmin = 0;
+    pi->outputmax = 1;
+    pi->exp = 0;
+    pi->units = "";		// no units defined
+    // initialize parameter 29 ("")
+    pi = self->__commonstate.params + 29;
+    pi->name = "d8FdBk";
+    pi->paramtype = GENLIB_PARAMTYPE_FLOAT;
+    pi->defaultvalue = self->m_d8FdBk_43;
+    pi->defaultref = 0;
+    pi->hasinputminmax = false;
+    pi->inputmin = 0;
+    pi->inputmax = 1;
+    pi->hasminmax = true;
+    pi->outputmin = 0;
+    pi->outputmax = 1;
+    pi->exp = 0;
+    pi->units = "";		// no units defined
+    
 	// initialize parameter 24 ("m_directLevel_22")
 	pi = self->__commonstate.params + 24;
 	pi->name = "directLevel";
@@ -867,6 +963,7 @@ void *create(t_param sr, long vs) {
 	pi->outputmax = 5;
 	pi->exp = 0;
 	pi->units = "";		// no units defined
+    
 	
 	return self;
 }

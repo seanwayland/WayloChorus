@@ -35,6 +35,7 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
+    //AudioProcessorValueTreeState& valueTreeState;
     C74GenAudioProcessor& processor;
     ScopedPointer<Slider> d1LevelSlider;
     ScopedPointer<Label> d1Level;
@@ -98,6 +99,15 @@ private:
     ScopedPointer<Label> directLevel;
     ScopedPointer<Slider> moddepthSlider;
     ScopedPointer<Label> moddepth;
+    ScopedPointer<Slider> d5FdBkSlider;
+    ScopedPointer<Label> d5FdBk;
+    ScopedPointer<Slider> d6FdBkSlider;
+    ScopedPointer<Label> d6FdBk;
+    ScopedPointer<Slider> d7FdBkSlider;
+    ScopedPointer<Label> d7FdBk;
+    ScopedPointer<Slider> d8FdBkSlider;
+    ScopedPointer<Label> d8FdBk;
+    
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (C74GenAudioProcessorEditor)

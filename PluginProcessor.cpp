@@ -226,8 +226,11 @@ void C74GenAudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-	
-	char *state;
+    
+//    ScopedPointer<XmlElement> xml (C74_GENPLUGIN::getparameters().state.createXml());
+ //   copyXmlToBinary (*xml, destData);
+	//code from MAX
+    char *state;
 	size_t statesize = C74_GENPLUGIN::getstatesize(m_C74PluginState);
 	state = (char *)malloc(sizeof(char) * statesize);
 	
@@ -235,6 +238,8 @@ void C74GenAudioProcessor::getStateInformation (MemoryBlock& destData)
 	destData.replaceWith(state, sizeof(char) * statesize);
 
 	if (state) free(state);
+ 
+
 }
 
 void C74GenAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
