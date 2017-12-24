@@ -141,9 +141,13 @@ int C74GenAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
-
+// I think this is called by the DAW when a preset is loaded 
 void C74GenAudioProcessor::setCurrentProgram (int index)
 {
+ 
+ 
+    
+   
 }
 
 const String C74GenAudioProcessor::getProgramName (int index)
@@ -218,6 +222,7 @@ bool C74GenAudioProcessor::hasEditor() const
 AudioProcessorEditor* C74GenAudioProcessor::createEditor()
 {
     return new C74GenAudioProcessorEditor (*this);
+   // this->sliderPresetCalled(0);
 }
 
 //==============================================================================

@@ -25,6 +25,7 @@ C74GenAudioProcessorEditor::C74GenAudioProcessorEditor (C74GenAudioProcessor& p)
     d1LevelSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     d1LevelSlider->addListener (this);
 
+
     addAndMakeVisible (d1Level = new Label ("d1Level",
                                             TRANS("d1 Level\n")));
     d1Level->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
@@ -434,6 +435,13 @@ C74GenAudioProcessorEditor::C74GenAudioProcessorEditor (C74GenAudioProcessor& p)
     d7timeSlider->setSliderStyle (Slider::LinearHorizontal);
     d7timeSlider->setTextBoxStyle (Slider::TextBoxLeft, false, 80, 20);
     d7timeSlider->addListener (this);
+    
+    addAndMakeVisible (textButton = new TextButton ("Load current preset"));
+    textButton->setColour (TextButton::buttonColourId, Colours::yellow);
+    textButton->setColour (TextButton::buttonOnColourId, Colours::greenyellow);
+    textButton->setColour (TextButton::textColourOffId, Colours::black);
+    textButton->setColour (TextButton::textColourOnId, Colours::black);
+    textButton->addListener (this);
 
 
 
@@ -588,7 +596,7 @@ C74GenAudioProcessorEditor::~C74GenAudioProcessorEditor()
     d7FdBk = nullptr;
     d8FdBkSlider = nullptr;
     d8FdBk = nullptr;
-  
+    textButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -665,7 +673,7 @@ void C74GenAudioProcessorEditor::resized()
 
     d8time->setBounds (608, 392, 64, 16);
     d8freq->setBounds (608, 360, 64, 16);
-
+    textButton->setBounds (590, 530, 100, 50);
     label->setBounds (16, 530, 512, 150);
     d4timeSlider->setBounds (8, 392, 264, 16);
     d8timeSlider->setBounds (344, 392, 264, 16);
@@ -683,13 +691,72 @@ void C74GenAudioProcessorEditor::resized()
     d8FdBk->setBounds (608, 488, 64, 16);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
-
+// function to set slider position to values call by preset change
+// the program loads the values correctly but doesn't move the sliders 
 }
+//void C74GenAudioProcessorEditor::sliderPresetCalled(Slider* sliderThatWasPreset, int sliderint)
+//{
+    
+//    {
+ //       if (sliderint == 0)
+ //       {
+            
+ //           d1LevelSlider->setValue(d1LevelSlider->getValue());
+//        }
+//    }
+//}
+
+void C74GenAudioProcessorEditor::buttonClicked (Button* buttonThatWasClicked)
+{
+    //[UserbuttonClicked_Pre]
+    //[/UserbuttonClicked_Pre]
+    
+    if (buttonThatWasClicked == textButton)
+    {
+        //[UserButtonCode_textButton] -- add your button handler code here..
+        //[/UserButtonCode_textButton]
+        d1LevelSlider->setValue(processor.getParameter(0));
+        d1freqSlider->setValue(processor.getParameter(1));
+        d1timeSlider->setValue(processor.getParameter(2));
+        d2LevelSlider->setValue(processor.getParameter(3));
+        d2freqSlider->setValue(processor.getParameter(4));
+        d2timeSlider->setValue(processor.getParameter(5));
+        d3LevelSlider->setValue(processor.getParameter(6));
+        d3freqSlider->setValue(processor.getParameter(7));
+        d3timeSlider->setValue(processor.getParameter(8));
+        d4LevelSlider->setValue(processor.getParameter(9));
+        d4freqSlider->setValue(processor.getParameter(10));
+        d4timeSlider->setValue(processor.getParameter(11));
+        d5LevelSlider->setValue(processor.getParameter(12));
+        d5freqSlider->setValue(processor.getParameter(13));
+        d5timeSlider->setValue(processor.getParameter(14));
+        d6LevelSlider->setValue(processor.getParameter(15));
+        d6freqSlider->setValue(processor.getParameter(16));
+        d6timeSlider->setValue(processor.getParameter(17));
+        d7LevelSlider->setValue(processor.getParameter(18));
+        d7freqSlider->setValue(processor.getParameter(19));
+        d7timeSlider->setValue(processor.getParameter(20));
+        d8LevelSlider->setValue(processor.getParameter(21));
+        d8freqSlider->setValue(processor.getParameter(22));
+        d8timeSlider->setValue(processor.getParameter(23));
+        directLevelSlider->setValue(processor.getParameter(24));
+        moddepthSlider->setValue(processor.getParameter(25));
+        d5FdBkSlider->setValue(processor.getParameter(26));
+        d6FdBkSlider->setValue(processor.getParameter(27));
+        d7FdBkSlider->setValue(processor.getParameter(28));
+        d8FdBkSlider->setValue(processor.getParameter(29));
+    }
+    
+    //[UserbuttonClicked_Post]
+    //[/UserbuttonClicked_Post]
+}
+
+
 
 void C74GenAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWasMoved)
 {
-    //[UsersliderValueChanged_Pre]
-    //[/UsersliderValueChanged_Pre]
+
+    
 
     if (sliderThatWasMoved == d1LevelSlider)
     {
@@ -850,8 +917,14 @@ void C74GenAudioProcessorEditor::sliderValueChanged (Slider* sliderThatWasMoved)
         sliderThatWasMoved->getValue();
         processor.setParameter(29,sliderThatWasMoved->getValue());
     }
+    
+
+
+
+    
 
     //[UsersliderValueChanged_Post]
     //[/UsersliderValueChanged_Post]
 }
+
 

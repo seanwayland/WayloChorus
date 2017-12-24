@@ -19,7 +19,8 @@
 /**
 */
 class C74GenAudioProcessorEditor  : public AudioProcessorEditor,
-                                    public Slider::Listener
+                                    public Slider::Listener,
+                                    public Button::Listener
 {
 public:
     C74GenAudioProcessorEditor (C74GenAudioProcessor&);
@@ -29,6 +30,8 @@ public:
     void paint (Graphics&) override;
     void resized() override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
+    void sliderPresetCalled(Slider* sliderThatWasPreset, int sliderint);
+    void buttonClicked (Button* buttonThatWasClicked) override;
     
 
 
@@ -36,6 +39,7 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     //AudioProcessorValueTreeState& valueTreeState;
+
     C74GenAudioProcessor& processor;
     ScopedPointer<Slider> d1LevelSlider;
     ScopedPointer<Label> d1Level;
@@ -107,6 +111,8 @@ private:
     ScopedPointer<Label> d7FdBk;
     ScopedPointer<Slider> d8FdBkSlider;
     ScopedPointer<Label> d8FdBk;
+    ScopedPointer<TextButton> textButton;
+
     
 
 
